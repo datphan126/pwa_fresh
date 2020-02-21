@@ -14,12 +14,15 @@ export interface Book {
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  private books: Array<Book>;
+  public books: Array<Book>;
   private booksObject: {
     [id: string]: Book;
   };
 
-  constructor(private dialog: MatDialog, private backendService: BackendService) { }
+  constructor(
+    private dialog: MatDialog,
+    private backendService: BackendService
+  ) { }
 
   ngOnInit() {
     this.backendService.fetchBooks().subscribe((data: Array<Book>) => {
